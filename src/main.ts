@@ -46,7 +46,7 @@ for(let i = 0; i < numTiles; i++) {
 }
 
 //track the selected tile
-let currentTile = "/tile1.png";
+let currentTile = 1;
 
 //draw the initial canvases
 redrawTilemap();
@@ -94,11 +94,11 @@ function drawSelectCanvas()
     for (let i = 0; i < numSelectables; i++) {
         const selectableImage = new Image();
         selectableImage.src = imageUrls[i];
-        drawTexture(0, i, selectCtx, selectableImage, selectCanvas.width, selectHeight, 64);
+        drawTexture(0, i, selectCtx, i, selectCanvas.width, selectHeight, 64);
     }
 }
 
 selectCanvas.addEventListener("click", (e) => {
     const coordY = Math.trunc(e.offsetY / selectHeight);
-    currentTile = imageUrls[coordY];
+    currentTile = coordY;
 })
